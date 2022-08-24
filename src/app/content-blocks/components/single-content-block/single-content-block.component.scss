@@ -1,0 +1,29 @@
+.content-block-card {
+    box-sizing: border-box;
+    width: 99.25%;
+    margin: 20px auto;
+    padding: 10px 30px;
+    box-shadow: lightgray 4px 4px 20px;
+    transition: all 0.2s ease-in-out;
+    margin-left: 5px;
+    margin-right: 5px;
+
+    h2 {
+      margin-bottom: 0;
+    }
+    p {
+      font-weight: 300;
+      font-size: 16px;
+    }
+
+    .date{
+      color: gray;
+    }
+
+}
+
+.btn-warning{
+  margin-left: 2.5px;
+}
+
+  

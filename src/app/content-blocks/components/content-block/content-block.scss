@@ -1,0 +1,60 @@
+.flex-container {
+  display: flex;
+  width: 100%;
+}
+
+.content-block-card {
+    box-sizing: border-box;
+    margin: 20px auto;
+    padding: 10px 30px; 
+    box-shadow: lightgray 4px 4px 20px;
+    transition: all 0.2s ease-in-out;
+    flex: 95%;
+    border-color: green;
+
+    h2 {
+      margin-bottom: 0;
+    }
+    p {
+      font-weight: 300;
+      font-size: 16px;
+    }
+
+    .date{
+      color: gray;
+    }
+
+}
+
+.delete{
+  flex: 5%;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.content-block-card:not(.highlight-card) {
+    cursor: pointer;
+  }
+
+.mat-icon {
+  cursor: pointer;
+}
+
+.content-block-card:not(.highlight-card):hover {
+transform: translateY(-3px);
+box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+}
+
+/*
+.mybuttonoverlap{
+  display: none;
+}
+
+.content-block-card:hover .mybuttonoverlap {
+  display: block;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}*/

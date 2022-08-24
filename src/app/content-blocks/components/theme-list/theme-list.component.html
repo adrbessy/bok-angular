@@ -1,0 +1,7 @@
+<!--<div class="form">
+    <input matInput type="text" [formControl]="searchCtrl">
+</div>-->
+<nav>
+<app-theme *ngFor="let themeElement of themes$ | async" 
+[theme]="themeElement"></app-theme>
+</nav>

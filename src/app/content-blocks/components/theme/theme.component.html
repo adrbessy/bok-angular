@@ -1,0 +1,9 @@
+<div class="row">
+    <!--<p (click)="onTheme()" class="column">{{theme.name | uppercase}}</p>-->
+    <p routerLink="/contentBlocks/theme/{{theme.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{theme.name | uppercase}}</p>
+    <div class="column">
+        <button (click)="onAddNewContentBlock()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+</div>

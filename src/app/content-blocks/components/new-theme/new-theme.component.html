@@ -1,0 +1,13 @@
+<div class="form-card">
+    <h2>Nouveau thème</h2>
+    <form [formGroup]="themeForm">
+        <div class="form-group">
+            <label for="name">Nom du thème</label>
+            <input id="name" type="text" formControlName="name">
+        </div>
+        <div class="modal-footer row">
+            <button type="button" (click)="onCancel()" class="btn btn-warning column">Annuler</button>
+            <button type="submit" (click)="onSubmitForm()" [disabled]="themeForm.invalid" class="btn btn-success">Enregistrer</button>
+        </div>  
+    </form>
+</div>

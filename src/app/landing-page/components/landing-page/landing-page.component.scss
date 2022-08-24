@@ -1,0 +1,33 @@
+.landing-block {
+    position: absolute;
+    margin-top: 40px;
+    left: 50%;
+    transform: translateX(-50%)
+  }
+  
+  .landing-links {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    box-sizing: border-box;
+    padding: 10px 10px;
+    border: none;
+    box-shadow: lightgray 3px 3px 7px;
+    margin: 10px;
+    outline: none;
+    font-size: 20px;
+    font-weight: 500;
+    &:active {
+      transform: translate(1px, 1px);
+      box-shadow: lightgray 0 0 5px;
+    }
+  }
+
+button:not(.highlight-card) {
+    cursor: pointer;
+}   

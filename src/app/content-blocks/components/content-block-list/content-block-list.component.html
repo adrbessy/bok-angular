@@ -1,0 +1,4 @@
+<div cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="contentBlocks" class="example-list">
+    <app-content-block class="example-box" *ngFor="let contentElement of contentBlocks" 
+    [contentBlock]="contentElement" cdkDrag></app-content-block>
+</div>

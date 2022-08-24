@@ -1,0 +1,15 @@
+<div class="row">
+    <p class="column">
+      <button (click)="onAddNewTheme()">
+        <mat-icon>add</mat-icon> New Theme
+      </button>
+    </p>
+</div>
+
+<div class="row">
+  
+    <app-theme-list class="column"></app-theme-list>
+
+    <app-content-block-list class="column contentBlockList col-7" cdkDropListGroup></app-content-block-list>
+
+</div>
