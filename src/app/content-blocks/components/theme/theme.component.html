@@ -1,8 +1,22 @@
 <div class="row">
     <p routerLink="/contentBlocks/theme/{{theme.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{theme.name | uppercase}}</p>
     <div class="column">
-        <button (click)="onAddNewContentBlock()">
-            <mat-icon>add</mat-icon>
+        <button class="mainButton" mat-icon-button [matMenuTriggerFor]="a">
+            <mat-icon>more_vert</mat-icon>
         </button>
+        <mat-menu #a="matMenu">
+            <button class="secondButton" mat-menu-item (click)="onAddNewContentBlock()">
+                <mat-icon>add</mat-icon>
+                <span>Add content</span>
+            </button>
+            <button class="secondButton" mat-menu-item (click)="onAddNewContentBlock()">
+                <mat-icon>add</mat-icon>
+                <span>Add sub-theme</span>
+            </button>
+            <button class="secondButton" mat-menu-item>
+                <mat-icon>delete</mat-icon>
+                <span>Delete theme</span>
+            </button>
+        </mat-menu>
     </div>
 </div>

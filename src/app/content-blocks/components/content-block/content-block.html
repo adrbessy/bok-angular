@@ -1,10 +1,12 @@
 <div class="flex-container">
-    <div class="content-block-card column" (click)="onEditContentBlock()">
-        <h2>{{contentBlock.title | titlecase}}</h2>
-        <p class="date">{{ contentBlock.createdDate | date : 'dd/MM/yy'}}</p>
-        <p [innerHTML]="htmlString"></p>
-    </div>
-    <div class="column delete" (click)="onDeleteContentBlock()">
-        <mat-icon>delete</mat-icon>
+    <div class="content-block-card row">
+        <div class="column col-11 content" (click)="onEditContentBlock()">
+            <h2>{{contentBlock.title | titlecase}}</h2>
+            <p class="date">{{ contentBlock.createdDate | date : 'dd/MM/yy'}}</p>
+            <p [innerHTML]="htmlString"></p>
+        </div>
+        <div class="column delete" (click)="onDeleteContentBlock()">
+            <mat-icon>delete</mat-icon>
+        </div>
     </div>
 </div>

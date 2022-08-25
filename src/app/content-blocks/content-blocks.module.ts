@@ -24,7 +24,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { EditContentBlockComponent } from './components/edit-content-block/edit-content-block.component'; 
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip'; 
-
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -53,7 +53,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     CKEditorModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatMenuModule
   ],
   exports: [
     ContentBlockComponent,
