@@ -28,17 +28,9 @@ export class ContentBlockListComponent implements OnInit {
         });
       }
     })
-    //this.contentBlocks$.subscribe(contentBlocks => this.contentBlocks = contentBlocks);
   }
 
   ngOnInit(): void {
-
-    /*this.contentBlocks = [
-      {id: 1, title: 'Sentence 1', content: 'blabla', themeId: 1, createdDate: new Date},
-      {id: 2, title: 'Sentence 2', content: 'blabdsfdsla', themeId: 1, createdDate: new Date},
-      {id: 3, title: 'Sentence 3', content: 'blagsdgsbla', themeId: 1, createdDate: new Date},
-      {id: 4, title: 'Sentence 4', content: 'blagggggggggggggggbla', themeId: 1, createdDate: new Date},
-    ]*/
   }
 
   drop(event: CdkDragDrop<ContentBlock[]>) {
@@ -48,7 +40,6 @@ export class ContentBlockListComponent implements OnInit {
     console.log('event.previousIndex : ' + event.previousIndex);
     console.log('event.currentIndex : ' + event.currentIndex);
     moveItemInArray(this.contentBlocks, event.previousIndex, event.currentIndex);
-    //this.contentBlocks = [...this.contentBlocks];
     for(var index in this.contentBlocks){
       console.log(this.contentBlocks[index]);
     }

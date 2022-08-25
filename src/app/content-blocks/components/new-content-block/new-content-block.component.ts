@@ -43,7 +43,7 @@ export class NewContentBlockComponent implements OnInit {
       }))
     );
     this.ckeditorContent = "";
-    CKEDITOR.config.height = "500px";
+    CKEDITOR.config.height = "350px";
     this.themesService.getThemeById(themeId).subscribe(theme => 
       {this.themeName = theme.name;}
     )

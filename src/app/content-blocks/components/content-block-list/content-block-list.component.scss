@@ -1,11 +1,9 @@
   .example-box {
     padding: 0px 10px;
-    border-bottom: solid 1px #ccc;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    box-sizing: border-box;
     cursor: move;
     background: white;
     font-size: 14px;
@@ -34,3 +32,4 @@
   .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
   }
+  

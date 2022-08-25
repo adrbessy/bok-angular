@@ -2,7 +2,6 @@
     <div class="content-block-card column" (click)="onEditContentBlock()">
         <h2>{{contentBlock.title | titlecase}}</h2>
         <p class="date">{{ contentBlock.createdDate | date : 'dd/MM/yy'}}</p>
-            <!--<button type="button column two" class="mybuttonoverlap btn btn-info" (click)="onEditContentBlock()">Read More</button>-->
         <p [innerHTML]="htmlString"></p>
     </div>
     <div class="column delete" (click)="onDeleteContentBlock()">

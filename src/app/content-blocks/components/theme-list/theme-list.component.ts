@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -13,17 +14,40 @@ export class ThemeListComponent implements OnInit {
 
   themes$!: Observable<Theme[]>;
   searchCtrl!: UntypedFormControl;
+  themes!: Theme[];
 
-  constructor(private themeService: ThemesService,
+  constructor(private themesService: ThemesService,
               private formBuilder: UntypedFormBuilder) { }
 
   ngOnInit(): void {
-    this.themes$ = this.themeService.getAllThemes();
+    this.themesService.getAllThemes().subscribe(themes => {
+      this.themes = themes.sort(this.compare);
+    });
     this.initForm();
+  }
+
+  compare( a: Theme, b: Theme ) {
+    if ( a.sort < b.sort ){
+      return 1;
+    }
+    if ( a.sort > b.sort ){
+      return -1;
+    }
+    return 0;
   }
 
   private initForm() {
     this.searchCtrl = this.formBuilder.control('');
+  }
+
+  drop(event: CdkDragDrop<Theme[]>) {
+    moveItemInArray(this.themes, event.previousIndex, event.currentIndex);
+    //always, recalculate the order of the container (the list to drag)
+    this.themes.forEach((x,index)=>{
+      x.sort=-index
+    })
+    this.themesService.deleteById(this.themes[0].id);
+    this.themesService.saveThemes(this.themes);
   }
 
 }

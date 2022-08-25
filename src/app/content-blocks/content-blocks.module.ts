@@ -20,8 +20,10 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CKEditorModule } from 'ng2-ckeditor';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { EditContentBlockComponent } from './components/edit-content-block/edit-content-block.component'; 
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip'; 
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import { EditContentBlockComponent } from './components/edit-content-block/edit-
     HttpClientModule, 
     FormsModule,
     CKEditorModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatButtonModule,
+    MatTooltipModule
   ],
   exports: [
     ContentBlockComponent,

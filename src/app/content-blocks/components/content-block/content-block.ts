@@ -33,15 +33,16 @@ export class ContentBlockComponent{
   }
 
   onDeleteContentBlock(){
-    const contentBlockId = +this.contentBlock.id;
-    this.contentBlocksService.deleteContentBlock(contentBlockId).subscribe((reponse) =>
-    {
-      location.reload();
-    },
-    (error) => {
-      console.log('Erreur !' + error);
+    if(confirm("Are you sure to delete ?")) {
+      const contentBlockId = +this.contentBlock.id;
+      this.contentBlocksService.deleteContentBlock(contentBlockId).subscribe((reponse) =>
+      {
+        location.reload();
+      },
+      (error) => {
+        console.log('Erreur !' + error);
+      }
+      );
     }
-  );
   }
-
 }

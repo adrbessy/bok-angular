@@ -14,15 +14,20 @@ export class ThemesService {
 
     addTheme(formValue: { name: string }): Observable<Theme> {
         return this.getAllThemes().pipe(
-            map(themes => [...themes].sort((a,b) => a.id - b.id)),
+            map(themes => [...themes].sort((a,b) => a.sort - b.sort)),
             map(sortedThemes => sortedThemes[sortedThemes.length - 1]),
-            map(previousTheme => ({
+            map(previousTheme => previousTheme ? previousTheme.sort : -1 ),
+            map(previousSort => ({
                 ...formValue,
                 createdDate: new Date(),
-                id: previousTheme.id + 1 
+                sort: previousSort + 1 
             })),
             switchMap(newTheme => this.http.post<Theme>(`${environment.apiUrl}/Themes`, newTheme))
         );
+    }
+
+    deleteById(id: number) {
+        this.http.delete<Theme>(`${environment.apiUrl}/Themes/deleteById/${id}`);
     }
 
     getAllThemes(): Observable<Theme[]>{
@@ -33,5 +38,8 @@ export class ThemesService {
         return this.http.get<Theme>(`${environment.apiUrl}/Themes/${themeId}`);
     }
     
+    saveThemes(updatedThemes : Theme[]): Observable<Theme[]> {
+        return this.http.post<Theme[]>(`${environment.apiUrl}/Themes/saveThemes`, updatedThemes);
+    }
 
 }

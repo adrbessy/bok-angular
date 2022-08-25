@@ -2,6 +2,8 @@
     <input matInput type="text" [formControl]="searchCtrl">
 </div>-->
 <nav>
-<app-theme *ngFor="let themeElement of themes$ | async" 
-[theme]="themeElement"></app-theme>
+    <div cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="themes" class="example-list">
+        <app-theme class="example-box" *ngFor="let themeElement of themes" 
+        [theme]="themeElement" cdkDrag>></app-theme>
+    </div>
 </nav>

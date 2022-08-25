@@ -26,20 +26,6 @@ export class ContentBlocksService {
         );
     }
 
-    saveContentBlocks(updatedContentBlocks : ContentBlock[]): Observable<ContentBlock[]> {
-        console.log("in replace")
-        for(var index in updatedContentBlocks){
-            console.log(updatedContentBlocks[index]);
-          }
-        const a = this.http.post<ContentBlock[]>(`${environment.apiUrl}/ContentBlocks/saveContentBlocks`, updatedContentBlocks);
-        a.subscribe(a=> {
-            for(var index in a){
-                console.log(a[index]);
-              }
-        })
-        return a;
-    }
-
     deleteByThemeId(themeId: number) {
         this.http.delete<ContentBlock>(`${environment.apiUrl}/ContentBlocks/deleteByThemeId/${themeId}`);
     }
@@ -58,6 +44,20 @@ export class ContentBlocksService {
 
     getContentBlocksByThemeId(themeId: number): Observable<ContentBlock[]>{
         return this.http.get<ContentBlock[]>(`${environment.apiUrl}/ContentBlocks/theme/${themeId}`);
+    }
+
+    saveContentBlocks(updatedContentBlocks : ContentBlock[]): Observable<ContentBlock[]> {
+        console.log("in replace")
+        for(var index in updatedContentBlocks){
+            console.log(updatedContentBlocks[index]);
+          }
+        const a = this.http.post<ContentBlock[]>(`${environment.apiUrl}/ContentBlocks/saveContentBlocks`, updatedContentBlocks);
+        a.subscribe(a=> {
+            for(var index in a){
+                console.log(a[index]);
+              }
+        })
+        return a;
     }
 
     updateContentBlock(updatedContentBlock : ContentBlock): Observable<ContentBlock>{
