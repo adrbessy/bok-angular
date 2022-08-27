@@ -30,6 +30,10 @@ export class ThemesService {
         this.http.delete<Theme>(`${environment.apiUrl}/Themes/deleteById/${id}`);
     }
 
+    deleteTheme(themeId: number): Observable<Theme>{
+        return this.http.delete<Theme>(`${environment.apiUrl}/Themes/${themeId}`);
+    }
+
     getAllThemes(): Observable<Theme[]>{
         return this.http.get<Theme[]>(`${environment.apiUrl}/Themes`);
     }
