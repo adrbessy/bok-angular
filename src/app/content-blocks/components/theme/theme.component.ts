@@ -15,6 +15,13 @@ export class ThemeComponent{
     private themesService: ThemesService){}
 
   @Input() theme!: Theme;
+  themes!: Theme[];
+
+  ngOnInit(): void {
+    this.themesService.getAllThemes().subscribe(themes => {
+      this.themes = themes;
+    });
+  }
 
   onTheme(){
     this.router.navigateByUrl(`contentBlocks/theme/${this.theme.id}`);
