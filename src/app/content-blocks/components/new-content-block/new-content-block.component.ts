@@ -28,7 +28,6 @@ export class NewContentBlockComponent implements OnInit {
 
   ngOnInit(): void {
     const themeId = +this.route.snapshot.params['themeId'];
-    console.log("themeId : " + themeId);
     this.contentBlockForm = this.formBuilder.group({
       title: [null, Validators.required], 
       content: [null],

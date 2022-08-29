@@ -10,6 +10,7 @@ import { SingleContentBlockComponent } from "./components/single-content-block/s
 const routes: Routes = [
     {path: 'create/:themeId', component: NewContentBlockComponent, /*canActivate: [AuthGuard]*/},
     {path: 'createTheme', component: NewThemeComponent, /*canActivate: [AuthGuard]*/},
+    {path: 'createTheme/:id', component: NewThemeComponent, /*canActivate: [AuthGuard]*/},
     {path: 'theme/:themeId/:id', component: SingleContentBlockComponent, /*canActivate: [AuthGuard]*/},
     {path: 'theme/:themeId/:id/edit', component: EditContentBlockComponent, /*canActivate: [AuthGuard]*/},
     {path: 'theme/:themeId', component: ContentBlocksAndThemesComponent, /*canActivate: [AuthGuard]*/},

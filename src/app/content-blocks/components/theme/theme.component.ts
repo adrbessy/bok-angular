@@ -36,10 +36,28 @@ export class ThemeComponent{
     this.router.navigateByUrl(`contentBlocks/create/${subtheme.id}`);
   }
 
+  onAddNewSubtheme() : void{
+    console.log("yes");
+    this.router.navigateByUrl(`contentBlocks/createTheme/${this.theme.id}`);
+  } 
+
   onDeleteTheme(){
     if(confirm("Are you sure to delete ?")) {
       const themeId = +this.theme.id;
       this.themesService.deleteTheme(themeId).subscribe((reponse) =>
+        {
+          location.reload();
+        },
+        (error) => {
+          console.log('Erreur !' + error);
+        }
+      );
+    }
+  }
+
+  onSubDeleteTheme(subthemeId: number){
+    if(confirm("Are you sure to delete ?")) {
+      this.themesService.deleteTheme(subthemeId).subscribe((reponse) =>
         {
           location.reload();
         },

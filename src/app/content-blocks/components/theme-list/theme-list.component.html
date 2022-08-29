@@ -2,7 +2,7 @@
     <input matInput type="text" [formControl]="searchCtrl">
 </div>-->
 
-    <div cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="themes" class="example-list">
-        <app-theme class="example-box" *ngFor="let themeElement of themes" 
-        [theme]="themeElement" cdkDrag></app-theme>
-    </div>
+<div cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="themes" class="example-list">
+    <app-theme class="example-box" *ngFor="let themeElement of themes" 
+    [theme]="themeElement" cdkDrag></app-theme>
+</div>
