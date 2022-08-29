@@ -37,7 +37,6 @@ export class ThemeComponent{
   }
 
   onAddNewSubtheme() : void{
-    console.log("yes");
     this.router.navigateByUrl(`contentBlocks/createTheme/${this.theme.id}`);
   } 
 

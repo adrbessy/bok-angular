@@ -43,14 +43,11 @@ export class ThemesService {
     }
     
     saveThemes(updatedThemes : Theme[]): Observable<Theme[]> {
-        console.log("in saveThemes");
-        const a =  this.http.post<Theme[]>(`${environment.apiUrl}/Themes/saveThemes`, updatedThemes);
-        a.subscribe(a=> {
-            for(var index in a){
-                console.log(a[index]);
-              }
-        })
-        return a;
+        return this.http.post<Theme[]>(`${environment.apiUrl}/Themes/saveThemes`, updatedThemes);
     }
+
+    updateThemes(updatedThemes : Theme[]): Observable<Theme[]>{
+        return this.http.put<Theme[]>(`${environment.apiUrl}/ThemeList`, updatedThemes);
+    }   
 
 }

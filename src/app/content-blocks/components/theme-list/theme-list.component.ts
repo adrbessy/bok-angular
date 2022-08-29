@@ -46,11 +46,14 @@ export class ThemeListComponent implements OnInit {
     this.themes.forEach((x,index)=>{
       x.sort=-index
     })
-    this.themes.forEach(function (value) {
-      console.log(value);
+    /*this.themesService.deleteAllThemes();
+    this.themesService.saveThemes(this.themes).subscribe(themes => {
+      this.themes = themes.sort(this.compare);
+    });*/
+    console.log("this.themes : " + this.themes);
+    this.themesService.updateThemes(this.themes).subscribe(themes => {
+      this.themes = themes.sort(this.compare);
     });
-    this.themesService.deleteAllThemes();
-    this.themesService.saveThemes(this.themes); // TODO 
   }
 
 }
