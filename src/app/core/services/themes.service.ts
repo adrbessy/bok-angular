@@ -26,8 +26,8 @@ export class ThemesService {
         );
     }
 
-    deleteById(id: number) {
-        this.http.delete<Theme>(`${environment.apiUrl}/Themes/deleteById/${id}`);
+    deleteAllThemes(): void {
+        this.http.delete(`${environment.apiUrl}/Themes`).subscribe(() =>  'Delete successful');
     }
 
     deleteTheme(themeId: number): Observable<Theme>{
@@ -43,7 +43,14 @@ export class ThemesService {
     }
     
     saveThemes(updatedThemes : Theme[]): Observable<Theme[]> {
-        return this.http.post<Theme[]>(`${environment.apiUrl}/Themes/saveThemes`, updatedThemes);
+        console.log("in saveThemes");
+        const a =  this.http.post<Theme[]>(`${environment.apiUrl}/Themes/saveThemes`, updatedThemes);
+        a.subscribe(a=> {
+            for(var index in a){
+                console.log(a[index]);
+              }
+        })
+        return a;
     }
 
 }

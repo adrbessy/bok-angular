@@ -13,13 +13,23 @@
   }
 }
 
+.subtheme{
+  margin-left: 20px;
+  margin-top: -10px;
+  margin-bottom: 2.5px;
+  cursor: pointer;
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.column2{
+  margin-top: -15px;
+}
+
 .mainButton2{
-  //background-color: #4CAF50;
-  //color: white;
   box-sizing: border-box;
   margin-left: 7.5px;
-  padding: 0px;
-  margin-top: -22.5px;
 }
 
 .mat-icon {
@@ -40,16 +50,6 @@ p{
   cursor: pointer;
   color: black;
   padding-top: 10px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-.subtheme{
-  margin-left: 20px;
-  margin-top: -5px;
-  margin-bottom: 2.5px;
-  cursor: pointer;
-  padding-top: 5px;
   padding-left: 5px;
   padding-right: 5px;
 }

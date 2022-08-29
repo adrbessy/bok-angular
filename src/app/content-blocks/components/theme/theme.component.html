@@ -25,7 +25,7 @@
         <div class= "subtheme column h-50" routerLink="/contentBlocks/theme/{{themeElement.id}}" *ngIf="themeElement.parentId==theme.id" routerLinkActive="active">
             <mat-icon>arrow_forward</mat-icon> {{themeElement.name | uppercase}}
         </div>
-        <div class="column h-50" *ngIf="themeElement.parentId==theme.id">
+        <div class="column column2" *ngIf="themeElement.parentId==theme.id">
             <button class="mainButton2" mat-icon-button [matMenuTriggerFor]="a">
                 <mat-icon>more_vert</mat-icon>
             </button>
