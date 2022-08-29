@@ -16,6 +16,7 @@ export class ThemeComponent{
 
   @Input() theme!: Theme;
   themes!: Theme[];
+  subtheme!: Theme;
 
   ngOnInit(): void {
     this.themesService.getAllThemes().subscribe(themes => {
@@ -29,6 +30,10 @@ export class ThemeComponent{
 
   onAddNewContentBlock(): void {
     this.router.navigateByUrl(`contentBlocks/create/${this.theme.id}`);
+  }
+
+  onAddNewContentBlockForSubtheme(subtheme: Theme): void {
+    this.router.navigateByUrl(`contentBlocks/create/${subtheme.id}`);
   }
 
   onDeleteTheme(){

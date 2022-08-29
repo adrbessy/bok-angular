@@ -21,7 +21,24 @@
             </mat-menu>
         </div>
     </div>
-    <div *ngFor="let themeElement of themes">
-        <div class= "subtheme" routerLink="/contentBlocks/theme/{{themeElement.id}}" *ngIf="themeElement.parentId==theme.id">-> {{themeElement.name | uppercase}}</div>
+    <div *ngFor="let themeElement of themes" class="row">
+        <div class= "subtheme column h-50" routerLink="/contentBlocks/theme/{{themeElement.id}}" *ngIf="themeElement.parentId==theme.id" routerLinkActive="active">
+            <mat-icon>arrow_forward</mat-icon> {{themeElement.name | uppercase}}
+        </div>
+        <div class="column h-50" *ngIf="themeElement.parentId==theme.id">
+            <button class="mainButton2" mat-icon-button [matMenuTriggerFor]="a">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #a="matMenu">
+                <button class="secondButton" mat-menu-item (click)="onAddNewContentBlockForSubtheme(themeElement)">
+                    <mat-icon>add</mat-icon>
+                    <span>Add content</span>
+                </button>
+                <button class="secondButton" mat-menu-item (click)="onDeleteTheme()">
+                    <mat-icon>delete</mat-icon>
+                    <span>Delete theme</span>
+                </button>
+            </mat-menu>
+        </div>
     </div>
 </div>

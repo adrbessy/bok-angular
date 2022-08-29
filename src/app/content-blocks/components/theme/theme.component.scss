@@ -1,23 +1,30 @@
 .mainButton {
-  background-color: #4CAF50; /* Green */
-  color: white;
+  //background-color: #4CAF50; /* Green */
+  //color: white;
   box-sizing: border-box;
   border: none;
-  box-shadow: lightgray 3px 3px 7px;
-  margin: 10px;
+  margin: 7.5px;
   margin-bottom: 11px;
   outline: none;
   font-size: 14px;
-  font-weight: 500;
   &:active {
     transform: translate(1px, 1px);
     box-shadow: lightgray 0 0 5px;
   }
 }
 
+.mainButton2{
+  //background-color: #4CAF50;
+  //color: white;
+  box-sizing: border-box;
+  margin-left: 7.5px;
+  padding: 0px;
+  margin-top: -22.5px;
+}
+
 .mat-icon {
   vertical-align: middle;
-  font-size: 1.5em;
+  font-size: 1.25em;
 }
 
 .active {
@@ -29,7 +36,7 @@
 
 p{
   margin-left: 20px;
-  margin-top: 10px;
+  margin-top: 9px;
   cursor: pointer;
   color: black;
   padding-top: 10px;
@@ -41,4 +48,12 @@ p{
   margin-left: 20px;
   margin-top: -5px;
   margin-bottom: 2.5px;
+  cursor: pointer;
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.row{
+
 }
