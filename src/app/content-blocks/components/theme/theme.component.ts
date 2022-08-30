@@ -1,5 +1,5 @@
 import { Component, Input} from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ThemesService } from 'src/app/core/services/themes.service';
 import { Theme } from '../../../core/models/bok.model';
 import { ContentBlockListComponent } from '../content-block-list/content-block-list.component';
@@ -12,7 +12,8 @@ import { ContentBlockListComponent } from '../content-block-list/content-block-l
 export class ThemeComponent{
 
   constructor(private router: Router,
-    private themesService: ThemesService){}
+    private themesService: ThemesService,
+    private route: ActivatedRoute){}
 
   @Input() theme!: Theme;
   themes!: Theme[];
@@ -52,6 +53,10 @@ export class ThemeComponent{
         }
       );
     }
+  }
+
+  onEditThemeName(){
+    this.router.navigateByUrl(`contentBlocks/editTheme/${this.theme.id}`);
   }
 
   onSubDeleteTheme(subthemeId: number){

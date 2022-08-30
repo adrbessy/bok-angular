@@ -34,6 +34,10 @@ export class ThemesService {
         return this.http.delete<Theme>(`${environment.apiUrl}/Themes/${themeId}`);
     }
 
+    editThemeName(theme: Theme): Observable<Theme> {
+        return this.http.put<Theme>(`${environment.apiUrl}/Themes`, theme);
+      }
+
     getAllThemes(): Observable<Theme[]>{
         return this.http.get<Theme[]>(`${environment.apiUrl}/Themes`);
     }

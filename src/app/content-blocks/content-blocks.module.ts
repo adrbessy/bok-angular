@@ -25,6 +25,7 @@ import { EditContentBlockComponent } from './components/edit-content-block/edit-
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip'; 
 import {MatMenuModule} from '@angular/material/menu';
+import { EditThemeComponent } from './components/edit-theme/edit-theme.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {MatMenuModule} from '@angular/material/menu';
     timeAgoPipe,
     NewThemeComponent,
     ReversePipe,
-    EditContentBlockComponent
+    EditContentBlockComponent,
+    EditThemeComponent
   ],
   imports: [
     CommonModule,
