@@ -1,1 +1,15 @@
-<p>edit-theme works!</p>
+<ng-container *ngIf="theme">
+    <div class="form-card">
+        <h2>Modification du nom du thème</h2>
+        <form [formGroup]="themeForm">
+            <div class="form-group">
+                <label for="name">Nom</label>
+                <input id="name" type="text" formControlName="name" size="50">
+            </div>
+            <div class="modal-footer row">
+                <button type="button" (click)="goBack()" class="btn btn-warning column">Annuler</button>
+                <button type="submit" (click)="onSubmitForm()" [disabled]="themeForm.invalid" class="btn btn-success column">Enregistrer</button>
+            </div>
+        </form>
+    </div>
+</ng-container>

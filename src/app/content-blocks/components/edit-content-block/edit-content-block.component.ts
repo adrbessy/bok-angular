@@ -37,8 +37,8 @@ export class EditContentBlockComponent implements OnInit {
     })
     this.contentBlocksService.getContentBlockById(contentBlockId).subscribe(contentBlock => 
       {this.contentBlock = contentBlock;
-        this.contentBlockForm.setValue({title: this.contentBlock.title, content: this.contentBlock.content, themeId: themeId, id: contentBlockId});})
-      
+        this.contentBlockForm.setValue({title: this.contentBlock.title, content: this.contentBlock.content, themeId: themeId, id: contentBlockId});
+      })
   }
 
   goBack(): void{
