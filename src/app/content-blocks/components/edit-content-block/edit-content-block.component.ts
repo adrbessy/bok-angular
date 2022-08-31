@@ -44,7 +44,7 @@ export class EditContentBlockComponent implements OnInit {
   goBack(): void{
     const themeId = +this.route.snapshot.params['themeId'];
     const contentBlockId = +this.route.snapshot.params['id'];
-    this.router.navigateByUrl(`/contentBlocks/theme/${themeId}/${contentBlockId}`);
+    this.router.navigateByUrl(`/contentBlocks/theme/${themeId}`);
   }
 
   onSubmitForm(): void {

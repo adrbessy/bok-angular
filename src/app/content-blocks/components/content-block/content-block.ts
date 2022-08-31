@@ -20,7 +20,7 @@ export class ContentBlockComponent{
     private sanitizer: DomSanitizer) {}
 
     ngOnInit(): void {
-      this.htmlString = this.sanitizer.bypassSecurityTrustHtml(this.truncate(this.contentBlock.content,125));
+      this.htmlString = this.sanitizer.bypassSecurityTrustHtml(this.truncate(this.contentBlock.content,149));
     }
 
   truncate(str: string, n: number){
@@ -45,4 +45,10 @@ export class ContentBlockComponent{
       );
     }
   }
+
+  edit(): void{
+    const themeId = +this.route.snapshot.params['themeId'];
+    this.router.navigateByUrl(`/contentBlocks/theme/${themeId}/${this.contentBlock.id}/edit`);
+  }
+
 }

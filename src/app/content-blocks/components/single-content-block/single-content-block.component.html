@@ -1,12 +1,18 @@
 <div class="content-block-card" *ngIf="contentBlock">
     <div class="row justify-content-between">
-        <h2 class="column">{{contentBlock.title | titlecase}}</h2>
-        <div class="column">
-            <button type="button" (click)="goBack()" class="btn btn-warning">Go Back</button>
-            <button type="button" (click)="edit()" class="btn btn-primary">Edit</button>
+        <div class="column" (click)="goBack()">
+            <mat-icon matTooltip="Retour">arrow_back</mat-icon>
+            <!--<button type="button" (click)="goBack()" class="btn btn-warning">Go Back</button>-->
         </div>
+        <div class="column">
+            <!--<button type="button" (click)="edit()" class="btn btn-primary">Edit</button>-->
+                <mat-icon (click)="edit()" matTooltip="Modifier">edit</mat-icon>
+        </div>
+    </div>
+    <div class="row justify-content-between">
+        <h2 class="column">{{contentBlock.title | titlecase}}</h2>
     </div>
     <p class="date">{{ contentBlock.createdDate | date : 'dd/MM/yy' }}</p>
     <p [innerHTML]="htmlString"></p>
+    <mat-icon matTooltip="Retour" (click)="goBack()">arrow_back</mat-icon>
 </div>
-<button type="button" (click)="goBack()" class="btn btn-warning column">Go Back</button>

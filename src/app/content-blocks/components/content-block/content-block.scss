@@ -9,7 +9,7 @@
     padding: 10px 0px; 
     box-shadow: lightgray 4px 4px 20px;
     transition: all 0.2s ease-in-out;
-    flex: 95%;
+    flex: 100%;
     border-color: green;
 
     .content{
@@ -28,13 +28,18 @@
       color: gray;
     }
 
+    .tex{
+      padding-left: 25px;
+    }
+
 }
 
-.delete{
-  flex: 5%;
-  padding-right: -50px;
-  margin-right: -20px;
-  text-align: center;
+.icons{
+  padding-right: 20px;
+}
+
+.ico{
+  padding-left: 12.5px;
 }
 
 .content-block-card:not(.highlight-card) {
