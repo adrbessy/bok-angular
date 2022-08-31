@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, Input} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ThemesService } from 'src/app/core/services/themes.service';
@@ -21,7 +22,35 @@ export class ThemeComponent{
 
   ngOnInit(): void {
     this.themesService.getAllThemes().subscribe(themes => {
-      this.themes = themes;
+      this.themes = themes.sort(this.compare);
+    });
+  }
+
+  compare( a: Theme, b: Theme ) {
+    if ( a.sort < b.sort ){
+      return 1;
+    }
+    if ( a.sort > b.sort ){
+      return -1;
+    }
+    return 0;
+  }
+
+  drop(event: CdkDragDrop<Theme[]>) {
+    console.log("hello guys");
+    moveItemInArray(this.themes, event.previousIndex, event.currentIndex);
+    //always, recalculate the order of the container (the list to drag)
+    for(var index in this.themes){
+      console.log(this.themes[index]);
+    }
+    this.themes.forEach((x,index)=>{
+      x.sort=-index
+    })
+    for(var index in this.themes){
+      console.log(this.themes[index]);
+    }
+    this.themesService.updateThemes(this.themes).subscribe(themes => {
+      this.themes = themes.sort(this.compare);
     });
   }
 

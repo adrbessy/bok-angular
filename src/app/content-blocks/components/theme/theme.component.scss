@@ -44,6 +44,13 @@
   display: inline-block;
 }
 
+.active2 {
+  background-color: white;
+  color: blue;
+  padding-bottom  : 0px;
+  display: inline-block;
+}
+
 p{
   margin-left: 20px;
   margin-top: 9px;
@@ -52,4 +59,33 @@ p{
   padding-top: 10px;
   padding-left: 5px;
   padding-right: 5px;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-box:last-child {
+  border: none;
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  cursor: move;
+  font-size: 14px;
 }

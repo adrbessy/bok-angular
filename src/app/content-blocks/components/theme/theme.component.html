@@ -25,24 +25,26 @@
             </mat-menu>
         </div>
     </div>
-    <div *ngFor="let themeElement of themes" class="row">
-        <div class= "subtheme column h-50" routerLink="/contentBlocks/theme/{{themeElement.id}}" *ngIf="themeElement.parentId==theme.id" routerLinkActive="active">
-            <mat-icon>subdirectory_arrow_right</mat-icon> {{themeElement.name | uppercase}}
-        </div>
-        <div class="column column2" *ngIf="themeElement.parentId==theme.id">
-            <button class="mainButton2" mat-icon-button [matMenuTriggerFor]="a">
-                <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #a="matMenu">
-                <button class="secondButton" mat-menu-item (click)="onAddNewContentBlockForSubtheme(themeElement)">
-                    <mat-icon>add</mat-icon>
-                    <span>Add content</span>
+    <div cdkDropList [cdkDropListData]="themes" class="example-list" (cdkDropListDropped)="drop($event)">
+        <div *ngFor="let themeElement of themes" class="row" cdkDrag class="example-box">
+            <div class= "subtheme column h-50" routerLink="/contentBlocks/theme/{{themeElement.id}}" *ngIf="themeElement.parentId==theme.id" routerLinkActive="active2">
+                <mat-icon>subdirectory_arrow_right</mat-icon> {{themeElement.name | uppercase}}
+            </div>
+            <div class="column column2" *ngIf="themeElement.parentId==theme.id">
+                <button class="mainButton2" mat-icon-button [matMenuTriggerFor]="a">
+                    <mat-icon>more_vert</mat-icon>
                 </button>
-                <button class="secondButton" mat-menu-item (click)="onSubDeleteTheme(themeElement.id)">
-                    <mat-icon>delete</mat-icon>
-                    <span>Delete theme</span>
-                </button>
-            </mat-menu>
+                <mat-menu #a="matMenu">
+                    <button class="secondButton" mat-menu-item (click)="onAddNewContentBlockForSubtheme(themeElement)">
+                        <mat-icon>add</mat-icon>
+                        <span>Add content</span>
+                    </button>
+                    <button class="secondButton" mat-menu-item (click)="onSubDeleteTheme(themeElement.id)">
+                        <mat-icon>delete</mat-icon>
+                        <span>Delete theme</span>
+                    </button>
+                </mat-menu>
+            </div>
         </div>
     </div>
 </div>
