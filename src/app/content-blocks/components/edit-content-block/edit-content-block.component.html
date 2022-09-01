@@ -1,11 +1,14 @@
 <ng-container *ngIf="contentBlock">
     <div class="form-card">
-        <h2>Modification dans le thème <span style="color: #2EA043">{{themeName | titlecase}}</span></h2>
+        <h2><span style="color: #2EA043">{{themeName | titlecase}}</span></h2>
         <form [formGroup]="contentBlockForm">
             <div class="form-group">
                 <label for="title">Titre</label>
-                <input id="title" type="text" formControlName="title" size="50">
+                <input id="title" type="text" formControlName="title" size="30">
             </div>
+            <mat-tab-group>
+                <mat-tab *ngFor="let contentBlock of contentBlocks; let index = index" [label]="contentBlock.title"> </mat-tab>
+            </mat-tab-group>
             <div class="form-group">
                 <ckeditor
                 formControlName="content" name="fieldName" ngDefaultControl>

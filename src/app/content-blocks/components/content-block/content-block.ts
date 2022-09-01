@@ -20,7 +20,7 @@ export class ContentBlockComponent{
     private sanitizer: DomSanitizer) {}
 
     ngOnInit(): void {
-      this.htmlString = this.sanitizer.bypassSecurityTrustHtml(this.truncate(this.contentBlock.content,149));
+      this.htmlString = this.sanitizer.bypassSecurityTrustHtml(this.truncate(this.contentBlock.content,200));
     }
 
   truncate(str: string, n: number){

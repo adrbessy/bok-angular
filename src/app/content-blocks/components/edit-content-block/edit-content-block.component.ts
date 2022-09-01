@@ -1,21 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ContentBlock } from 'src/app/core/models/bok.model';
 import { ContentBlocksService } from 'src/app/core/services/content-blocks.service';
 import { ThemesService } from 'src/app/core/services/themes.service';
 import { tap } from 'rxjs/operators';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-edit-content-block',
   templateUrl: './edit-content-block.component.html',
-  styleUrls: ['./edit-content-block.component.scss']
+  styleUrls: ['./edit-content-block.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class EditContentBlockComponent implements OnInit {
 
   themeName!: string;
   contentBlockForm!: UntypedFormGroup;
   contentBlock!: ContentBlock;
+  contentBlocks!: ContentBlock[];
 
   constructor(private contentBlocksService: ContentBlocksService,
     private formBuilder: UntypedFormBuilder,
@@ -35,12 +38,15 @@ export class EditContentBlockComponent implements OnInit {
       themeId : themeId,
       id: contentBlockId
     })
-    this.contentBlocksService.getContentBlockById(contentBlockId).subscribe(contentBlock => 
-      {this.contentBlock = contentBlock;
+    this.contentBlocksService.getContentBlockById(contentBlockId).subscribe(contentBlock => {
+        this.contentBlock = contentBlock;
         this.contentBlockForm.setValue({title: this.contentBlock.title, content: this.contentBlock.content, themeId: themeId, id: contentBlockId});
       })
-      CKEDITOR.config.height = "350px";
-      CKEDITOR.config.removeButtons = 'Source,Save,NewPage,ExportPdf,Preview,Print,Cut,Copy,Paste,Templates,PasteText,PasteFromWord,Undo,Redo,Find,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Replace,Strike,Subscript,Superscript,CopyFormatting,RemoveFormat,NumberedList,BulletedList,Outdent,Indent,Blockquote,CreateDiv,JustifyLeft,JustifyCenter,JustifyRight,JustifyBlock,BidiLtr,BidiRtl,Language,Unlink,Anchor,Smiley,SpecialChar,Table,PageBreak,Iframe,Styles,Format,ShowBlocks,About';  
+    CKEDITOR.config.height = "350px";
+    CKEDITOR.config.removeButtons = 'Source,Save,NewPage,ExportPdf,Preview,Print,Cut,Copy,Paste,Templates,PasteText,PasteFromWord,Undo,Redo,Find,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Replace,Strike,Subscript,Superscript,CopyFormatting,RemoveFormat,NumberedList,BulletedList,Outdent,Indent,Blockquote,CreateDiv,JustifyLeft,JustifyCenter,JustifyRight,JustifyBlock,BidiLtr,BidiRtl,Language,Unlink,Anchor,Smiley,SpecialChar,Table,PageBreak,Iframe,Styles,Format,ShowBlocks,About';  
+    this.contentBlocksService.getContentBlocksByThemeId(themeId).subscribe(contentBlocks => {
+      this.contentBlocks = contentBlocks;
+    });
   }
 
   goBack(): void{

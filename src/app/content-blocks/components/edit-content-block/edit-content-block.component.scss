@@ -8,3 +8,11 @@ width: 100%;
 padding: 10px 30px;
 box-shadow: lightgray 4px 4px 20px;
 }
+
+.mat-tab-label {
+    min-width: 25px !important;
+    padding: 5px;
+    background-color: transparent;
+    color: #2EA043  ;
+    font-weight: 700;
+}
