@@ -27,26 +27,29 @@ export class EditContentBlockComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    const themeId = +this.route.snapshot.params['themeId'];
-    const contentBlockId = +this.route.snapshot.params['id'];
-    this.themesService.getThemeById(themeId).subscribe(theme => 
-      {this.themeName = theme.name;}
-    )
-    this.contentBlockForm = this.formBuilder.group({
-      title: [null, Validators.required], 
-      content: [null],
-      themeId : themeId,
-      id: contentBlockId
-    })
-    this.contentBlocksService.getContentBlockById(contentBlockId).subscribe(contentBlock => {
-        this.contentBlock = contentBlock;
-        this.contentBlockForm.setValue({title: this.contentBlock.title, content: this.contentBlock.content, themeId: themeId, id: contentBlockId});
+    this.route.params.subscribe(params => {
+      // PARAMS CHANGED .. TO SOMETHING REALLY COOL HERE ..
+      let themeId = +params['themeId']; // (+) converts string 'id' to a number
+      let contentBlockId = +params['id'];
+      this.themesService.getThemeById(themeId).subscribe(theme => 
+        {this.themeName = theme.name;}
+      )
+      this.contentBlockForm = this.formBuilder.group({
+        title: [null, Validators.required], 
+        content: [null],
+        themeId : themeId,
+        id: contentBlockId
       })
+      this.contentBlocksService.getContentBlockById(contentBlockId).subscribe(contentBlock => {
+          this.contentBlock = contentBlock;
+          this.contentBlockForm.setValue({title: this.contentBlock.title, content: this.contentBlock.content, themeId: themeId, id: contentBlockId});
+      })
+      this.contentBlocksService.getContentBlocksByThemeId(themeId).subscribe(contentBlocks => {
+        this.contentBlocks = contentBlocks;
+      });
+    });
     CKEDITOR.config.height = "350px";
     CKEDITOR.config.removeButtons = 'Source,Save,NewPage,ExportPdf,Preview,Print,Cut,Copy,Paste,Templates,PasteText,PasteFromWord,Undo,Redo,Find,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Replace,Strike,Subscript,Superscript,CopyFormatting,RemoveFormat,NumberedList,BulletedList,Outdent,Indent,Blockquote,CreateDiv,JustifyLeft,JustifyCenter,JustifyRight,JustifyBlock,BidiLtr,BidiRtl,Language,Unlink,Anchor,Smiley,SpecialChar,Table,PageBreak,Iframe,Styles,Format,ShowBlocks,About';  
-    this.contentBlocksService.getContentBlocksByThemeId(themeId).subscribe(contentBlocks => {
-      this.contentBlocks = contentBlocks;
-    });
   }
 
   goBack(): void{
@@ -60,6 +63,11 @@ export class EditContentBlockComponent implements OnInit {
     this.contentBlocksService.updateContentBlock(this.contentBlockForm.value).pipe(
       tap(() => this.router.navigateByUrl(`/contentBlocks/theme/${themeId}`))
     ).subscribe();
+  }
+
+  onEditContentBlock(contentBlockId: number){
+    const themeId = +this.route.snapshot.params['themeId'];
+    this.router.navigateByUrl(`/contentBlocks/theme/${themeId}/${contentBlockId}/edit`);
   }
 
 }

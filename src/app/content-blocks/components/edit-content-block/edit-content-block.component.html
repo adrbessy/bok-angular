@@ -3,10 +3,10 @@
         <h2><span style="color: #2EA043">{{themeName | titlecase}}</span></h2>
         <div class="row">
             <div *ngFor="let cb of contentBlocks" class="col-4 col-sm-4 col-md-4 col-lg-4">
-                <span style="color: #2EA043" *ngIf="contentBlock.id == cb.id">
+                <span style="color: #2EA043" *ngIf="contentBlock.id == cb.id" (click)="onEditContentBlock(cb.id)">
                     {{cb.title}}
                 </span>
-                <span *ngIf="contentBlock.id != cb.id">
+                <span *ngIf="contentBlock.id != cb.id" (click)="onEditContentBlock(cb.id)">
                     {{cb.title}}
                 </span>
             </div>
