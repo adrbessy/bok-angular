@@ -24,7 +24,8 @@ export class NewContentBlockComponent implements OnInit {
               private contentBlocksService: ContentBlocksService,
               private themesService: ThemesService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
     const themeId = +this.route.snapshot.params['themeId'];
@@ -43,6 +44,8 @@ export class NewContentBlockComponent implements OnInit {
     );
     this.ckeditorContent = "";
     CKEDITOR.config.height = "350px";
+    CKEDITOR.config.removeButtons = 'Source,Save,NewPage,ExportPdf,Preview,Print,Cut,Copy,Paste,Templates,PasteText,PasteFromWord,Undo,Redo,Find,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Replace,Strike,Subscript,Superscript,CopyFormatting,RemoveFormat,NumberedList,BulletedList,Outdent,Indent,Blockquote,CreateDiv,JustifyLeft,JustifyCenter,JustifyRight,JustifyBlock,BidiLtr,BidiRtl,Language,Unlink,Anchor,Smiley,SpecialChar,Table,PageBreak,Iframe,Styles,Format,ShowBlocks,About';
+
     this.themesService.getThemeById(themeId).subscribe(theme => 
       {this.themeName = theme.name;}
     )

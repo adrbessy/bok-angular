@@ -10,6 +10,5 @@ export class AppComponent implements OnInit{
   interval$!: Observable<number>;
 
   ngOnInit(){
-    this.interval$ = interval(1000);
   }
 }

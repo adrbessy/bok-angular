@@ -39,11 +39,12 @@ export class EditContentBlockComponent implements OnInit {
       {this.contentBlock = contentBlock;
         this.contentBlockForm.setValue({title: this.contentBlock.title, content: this.contentBlock.content, themeId: themeId, id: contentBlockId});
       })
+      CKEDITOR.config.height = "350px";
+      CKEDITOR.config.removeButtons = 'Source,Save,NewPage,ExportPdf,Preview,Print,Cut,Copy,Paste,Templates,PasteText,PasteFromWord,Undo,Redo,Find,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Replace,Strike,Subscript,Superscript,CopyFormatting,RemoveFormat,NumberedList,BulletedList,Outdent,Indent,Blockquote,CreateDiv,JustifyLeft,JustifyCenter,JustifyRight,JustifyBlock,BidiLtr,BidiRtl,Language,Unlink,Anchor,Smiley,SpecialChar,Table,PageBreak,Iframe,Styles,Format,ShowBlocks,About';  
   }
 
   goBack(): void{
     const themeId = +this.route.snapshot.params['themeId'];
-    const contentBlockId = +this.route.snapshot.params['id'];
     this.router.navigateByUrl(`/contentBlocks/theme/${themeId}`);
   }
 
@@ -51,7 +52,7 @@ export class EditContentBlockComponent implements OnInit {
     const themeId = +this.route.snapshot.params['themeId'];
     const contentBlockId = +this.route.snapshot.params['id'];
     this.contentBlocksService.updateContentBlock(this.contentBlockForm.value).pipe(
-      tap(() => this.router.navigateByUrl(`/contentBlocks/theme/${themeId}/${contentBlockId}`))
+      tap(() => this.router.navigateByUrl(`/contentBlocks/theme/${themeId}`))
     ).subscribe();
   }
 

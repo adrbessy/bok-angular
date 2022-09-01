@@ -20,11 +20,12 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CKEditorModule } from 'ng2-ckeditor';
+//import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { EditContentBlockComponent } from './components/edit-content-block/edit-content-block.component'; 
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip'; 
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { EditThemeComponent } from './components/edit-theme/edit-theme.component';
 
 @NgModule({
