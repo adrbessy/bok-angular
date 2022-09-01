@@ -3,12 +3,25 @@
         <h2><span style="color: #2EA043">{{themeName | titlecase}}</span></h2>
         <div class="row">
             <div *ngFor="let cb of contentBlocks" class="col-4 col-sm-4 col-md-4 col-lg-4">
-                <span style="color: #2EA043" *ngIf="contentBlock.id == cb.id" (click)="onEditContentBlock(cb.id)">
-                    {{cb.title}}
-                </span>
-                <span *ngIf="contentBlock.id != cb.id" (click)="onEditContentBlock(cb.id)">
-                    {{cb.title}}
-                </span>
+                <div *ngIf="contentBlock.id == cb.id" class="row">
+                    <span style="color: #2EA043" (click)="onEditContentBlock(cb.id)" class="tab">
+                        {{cb.title}}
+                    </span>
+                    <form [formGroup]="contentBlockForm" *ngIf="canEditCode">
+                        <div class="form-group">
+                            <input id="title" type="text" formControlName="title" size="30">
+                        </div>
+                        <button type="submit" (click)="onSubmitTitle()" [disabled]="contentBlockForm.invalid" class="btn btn-success column" (click)="canEditCode = false">Enregistrer</button>
+                    </form>
+                    <div (click)="canEditCode = true" class="ico" matTooltip="Modifier le titre">
+                        <mat-icon>edit</mat-icon>
+                    </div>
+                </div>
+                <div *ngIf="contentBlock.id != cb.id" class="row">
+                    <span (click)="onEditContentBlock(cb.id)" class="tab">
+                        {{cb.title}}
+                    </span>
+                </div>
             </div>
         </div>
         <form [formGroup]="contentBlockForm">

@@ -27,7 +27,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip'; 
 import { MatMenuModule } from '@angular/material/menu';
 import { EditThemeComponent } from './components/edit-theme/edit-theme.component';
-import { MatTabsModule } from '@angular/material/tabs'
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [

@@ -19,6 +19,7 @@ export class EditContentBlockComponent implements OnInit {
   contentBlockForm!: UntypedFormGroup;
   contentBlock!: ContentBlock;
   contentBlocks!: ContentBlock[];
+  canEditCode!: Boolean;
 
   constructor(private contentBlocksService: ContentBlocksService,
     private formBuilder: UntypedFormBuilder,
@@ -63,6 +64,15 @@ export class EditContentBlockComponent implements OnInit {
     this.contentBlocksService.updateContentBlock(this.contentBlockForm.value).pipe(
       tap(() => this.router.navigateByUrl(`/contentBlocks/theme/${themeId}`))
     ).subscribe();
+  }
+
+  onSubmitTitle(): void {
+    const themeId = +this.route.snapshot.params['themeId'];
+    const contentBlockId = +this.route.snapshot.params['id'];
+    this.contentBlocksService.updateContentBlock(this.contentBlockForm.value).pipe(
+      tap(() => this.router.navigateByUrl(`/contentBlocks/theme/${themeId}/${contentBlockId}/edit`))
+    ).subscribe();
+    location.reload();
   }
 
   onEditContentBlock(contentBlockId: number){
