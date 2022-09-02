@@ -6,6 +6,7 @@ import { ContentBlocksService } from 'src/app/core/services/content-blocks.servi
 import { ThemesService } from 'src/app/core/services/themes.service';
 import { tap } from 'rxjs/operators';
 import { ThemePalette } from '@angular/material/core';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-edit-content-block',
@@ -20,12 +21,16 @@ export class EditContentBlockComponent implements OnInit {
   contentBlock!: ContentBlock;
   contentBlocks!: ContentBlock[];
   canEditCode!: Boolean;
+  notifier!: NotifierService;
 
   constructor(private contentBlocksService: ContentBlocksService,
     private formBuilder: UntypedFormBuilder,
     private themesService: ThemesService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    notifierService: NotifierService) { 
+      this.notifier = notifierService;
+    }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -62,8 +67,9 @@ export class EditContentBlockComponent implements OnInit {
     const themeId = +this.route.snapshot.params['themeId'];
     const contentBlockId = +this.route.snapshot.params['id'];
     this.contentBlocksService.updateContentBlock(this.contentBlockForm.value).pipe(
-      tap(() => this.router.navigateByUrl(`/contentBlocks/theme/${themeId}`))
+      tap(() => this.router.navigateByUrl(`/contentBlocks/theme/${themeId}/${contentBlockId}/edit`))
     ).subscribe();
+    this.notifier.notify('success', 'Contenu sauvegardé !');
   }
 
   onSubmitTitle(): void {
@@ -71,8 +77,15 @@ export class EditContentBlockComponent implements OnInit {
     const contentBlockId = +this.route.snapshot.params['id'];
     this.contentBlocksService.updateContentBlock(this.contentBlockForm.value).pipe(
       tap(() => this.router.navigateByUrl(`/contentBlocks/theme/${themeId}/${contentBlockId}/edit`))
-    ).subscribe();
-    location.reload();
+    ).subscribe(
+      (reponse) =>
+      {
+        location.reload();
+      },
+      (error) => {
+        console.log('Erreur !' + error);
+      }
+    );
   }
 
   onEditContentBlock(contentBlockId: number){

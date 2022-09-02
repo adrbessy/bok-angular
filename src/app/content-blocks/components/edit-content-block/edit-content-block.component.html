@@ -1,20 +1,22 @@
 <ng-container *ngIf="contentBlock">
     <div class="form-card">
         <h2><span style="color: #2EA043">{{themeName | titlecase}}</span></h2>
+        <div class="container">
         <div class="row">
             <div *ngFor="let cb of contentBlocks" class="col-4 col-sm-4 col-md-4 col-lg-4">
                 <div *ngIf="contentBlock.id == cb.id" class="row">
-                    <span style="color: #2EA043" (click)="onEditContentBlock(cb.id)" class="tab">
+                    <span style="color: #2EA043" (click)="onEditContentBlock(cb.id)" class="tab" *ngIf="!canEditCode">
                         {{cb.title}}
                     </span>
                     <form [formGroup]="contentBlockForm" *ngIf="canEditCode">
                         <div class="form-group">
                             <input id="title" type="text" formControlName="title" size="30">
                         </div>
-                        <button type="submit" (click)="onSubmitTitle()" [disabled]="contentBlockForm.invalid" class="btn btn-success column" (click)="canEditCode = false">Enregistrer</button>
+                        <button type="button" (click)="canEditCode = false" class="btn btn-warning column">Annuler</button>
+                        <button type="submit" (click)="onSubmitTitle()" [disabled]="contentBlockForm.invalid" class="btn btn-success column">Enregistrer</button>
                     </form>
-                    <div (click)="canEditCode = true" class="ico" matTooltip="Modifier le titre">
-                        <mat-icon>edit</mat-icon>
+                    <div (click)="canEditCode = true" class="ico" matTooltip="Modifier le titre" *ngIf="!canEditCode">
+                        <mat-icon id="edit">edit</mat-icon>
                     </div>
                 </div>
                 <div *ngIf="contentBlock.id != cb.id" class="row">
@@ -23,6 +25,7 @@
                     </span>
                 </div>
             </div>
+        </div>
         </div>
         <form [formGroup]="contentBlockForm">
             <!--<mat-tab-group>
@@ -40,9 +43,10 @@
             </mat-tab-group>-->
 
             <div class="modal-footer row">
-                <button type="button" (click)="goBack()" class="btn btn-warning column">Annuler</button>
-                <button type="submit" (click)="onSubmitForm()" [disabled]="contentBlockForm.invalid" class="btn btn-success column">Enregistrer</button>
+                <button type="button" (click)="goBack()" class="btn btn-warning column">Retour</button>
+                <button type="submit" (click)="onSubmitForm()" class="btn btn-success column">Enregistrer</button>
             </div>  
         </form>
     </div>
 </ng-container>
+<notifier-container></notifier-container>

@@ -19,4 +19,12 @@
 
 .tab{
     cursor: pointer;
+    margin-top: 2.5px;
 }
+
+#edit{
+    transform: scale(0.75);
+    margin-left: 5px;
+}
+
+@import "node_modules/angular-notifier/styles";

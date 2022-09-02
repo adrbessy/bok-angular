@@ -28,6 +28,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatMenuModule } from '@angular/material/menu';
 import { EditThemeComponent } from './components/edit-theme/edit-theme.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { NotifierModule } from 'angular-notifier';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatButtonModule,
     MatTooltipModule,
     MatMenuModule,
-    MatTabsModule
+    MatTabsModule,
+    NotifierModule
   ],
   exports: [
     ContentBlockComponent,
