@@ -10,7 +10,7 @@
                     <mat-icon>add</mat-icon>
                     <span>Add content</span>
                 </button>
-                <button class="secondButton" mat-menu-item (click)="onEditThemeName()">
+                <button class="secondButton" mat-menu-item (click)="onEditThemeName(theme.id)">
                     <mat-icon>add</mat-icon>
                     <span>Edit theme name</span>
                 </button>
@@ -38,6 +38,10 @@
                     <button class="secondButton" mat-menu-item (click)="onAddNewContentBlockForSubtheme(themeElement)">
                         <mat-icon>add</mat-icon>
                         <span>Add content</span>
+                    </button>
+                    <button class="secondButton" mat-menu-item (click)="onEditThemeName(themeElement.id)">
+                        <mat-icon>add</mat-icon>
+                        <span>Edit theme name</span>
                     </button>
                     <button class="secondButton" mat-menu-item (click)="onSubDeleteTheme(themeElement.id)">
                         <mat-icon>delete</mat-icon>

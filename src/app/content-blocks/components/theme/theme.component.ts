@@ -84,8 +84,8 @@ export class ThemeComponent{
     }
   }
 
-  onEditThemeName(){
-    this.router.navigateByUrl(`contentBlocks/editTheme/${this.theme.id}`);
+  onEditThemeName(themeId: number){
+    this.router.navigateByUrl(`contentBlocks/editTheme/${themeId}`);
   }
 
   onSubDeleteTheme(subthemeId: number){
