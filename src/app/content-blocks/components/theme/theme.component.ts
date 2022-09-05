@@ -84,6 +84,30 @@ export class ThemeComponent{
     }
   }
 
+  onDownload(){
+    /*const blob = new Blob(["lol"], { type: 'text/plain' });
+    const url= window.URL.createObjectURL(blob);
+    var anchor = document.createElement("a");
+    anchor.download = "myfileaa.txt";
+    anchor.href = url;
+    window.open(url);*/
+    this.saveData("bonjour", "blabla.txt");
+  }
+
+  saveData = (function () {
+    var a = document.createElement("a");
+    document.body.appendChild(a);
+    return function (data: any, fileName: string) {
+        var json = JSON.stringify(data),  
+            blob = new Blob([json], {type: "octet/stream"}),
+            url = window.URL.createObjectURL(blob);
+        a.href = url;
+        a.download = fileName;
+        a.click();
+        window.URL.revokeObjectURL(url);
+    };
+  }());
+
   onEditThemeName(themeId: number){
     this.router.navigateByUrl(`contentBlocks/editTheme/${themeId}`);
   }

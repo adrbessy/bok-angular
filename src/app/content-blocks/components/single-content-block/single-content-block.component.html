@@ -9,8 +9,22 @@
                 <mat-icon (click)="edit()" matTooltip="Modifier">edit</mat-icon>
         </div>
     </div>
-    <div class="row justify-content-between">
-        <h2 class="column">{{contentBlock.title | titlecase}}</h2>
+
+    <div class="container">
+        <div class="row">
+            <div *ngFor="let cb of contentBlocks" class="col-5 col-sm-5 col-md-5 col-lg-5">
+                <div *ngIf="contentBlock.id == cb.id" class="row">
+                    <span style="color: #2EA043" (click)="onShowContentBlock(cb.id)" class="tab">
+                        {{cb.title}}
+                    </span>
+                </div>
+                <div *ngIf="contentBlock.id != cb.id" class="row">
+                    <span (click)="onShowContentBlock(cb.id)" class="tab">
+                        {{cb.title}}
+                    </span>
+                </div>
+            </div>
+        </div>
     </div>
     <p class="date">{{ contentBlock.createdDate | date : 'dd/MM/yy' }}</p>
     <p [innerHTML]="htmlString"></p>

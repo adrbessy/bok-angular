@@ -16,16 +16,24 @@ export class SingleContentBlockComponent implements OnInit{
   contentBlock$!: Observable<ContentBlock>;
   contentBlock!: ContentBlock;
   htmlString!: SafeHtml;
+  contentBlocks!: ContentBlock[];
 
   constructor(private contentBlocksService: ContentBlocksService,
     private route: ActivatedRoute, private router: Router,
     private sanitizer: DomSanitizer){}
 
   ngOnInit(): void {
-    const contentBlockId = +this.route.snapshot.params['id']
-    this.contentBlocksService.getContentBlockById(contentBlockId).subscribe(contentBlock => 
-      {this.contentBlock = contentBlock;
-      this.htmlString = this.sanitizer.bypassSecurityTrustHtml(contentBlock.content)})
+    this.route.params.subscribe(params => {
+      let themeId = +params['themeId']; // (+) converts string 'id' to a number
+      let contentBlockId = +params['id'];
+      this.contentBlocksService.getContentBlockById(contentBlockId).subscribe(contentBlock => {
+        this.contentBlock = contentBlock;
+        this.htmlString = this.sanitizer.bypassSecurityTrustHtml(contentBlock.content)
+      })
+      this.contentBlocksService.getContentBlocksByThemeId(themeId).subscribe(contentBlocks => {
+        this.contentBlocks = contentBlocks;
+      });
+    })
   }
 
   goBack(): void{
@@ -37,6 +45,11 @@ export class SingleContentBlockComponent implements OnInit{
     const themeId = +this.route.snapshot.params['themeId'];
     const contentBlockId = +this.route.snapshot.params['id'];
     this.router.navigateByUrl(`/contentBlocks/theme/${themeId}/${contentBlockId}/edit`);
+  }
+
+  onShowContentBlock(contentBlockId: number){
+    const themeId = +this.route.snapshot.params['themeId'];
+    this.router.navigateByUrl(`/contentBlocks/theme/${themeId}/${contentBlockId}`);
   }
 
 }

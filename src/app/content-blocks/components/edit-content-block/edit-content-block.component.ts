@@ -62,6 +62,9 @@ export class EditContentBlockComponent implements OnInit {
     });
     CKEDITOR.config.height = "500px";
     CKEDITOR.config.removeButtons = 'Source,Save,NewPage,ExportPdf,Preview,Print,Cut,Copy,Paste,Templates,PasteText,PasteFromWord,Undo,Redo,Find,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Replace,Strike,Subscript,Superscript,CopyFormatting,RemoveFormat,NumberedList,BulletedList,Outdent,Indent,Blockquote,CreateDiv,JustifyLeft,JustifyCenter,JustifyRight,JustifyBlock,BidiLtr,BidiRtl,Language,Unlink,Anchor,Smiley,SpecialChar,Table,PageBreak,Iframe,Styles,Format,ShowBlocks,About';  
+    CKEDITOR.config.fontSize_defaultLabel = '16px';
+    CKEDITOR.addCss(".cke_editable{cursor:text; font-size: 16px; font-family: Arial, sans-serif;}");
+    CKEDITOR.addCss('.cke_editable { background-color: #2E3943; color: white }');
   }
 
   goBack(): void{
@@ -77,6 +80,11 @@ export class EditContentBlockComponent implements OnInit {
       }
     );
     //this.router.navigateByUrl(`/contentBlocks/theme/${themeId}`);
+  }
+
+  onShowContentBlock(){
+    const themeId = +this.route.snapshot.params['themeId'];
+    this.router.navigateByUrl(`contentBlocks/theme/${themeId}/${this.contentBlock.id}`);
   }
 
   onSubmitForm(): void {
@@ -123,7 +131,6 @@ export class EditContentBlockComponent implements OnInit {
         console.log('Erreur !' + error);
       }
     );
-    //this.router.navigateByUrl(`/contentBlocks/theme/${themeId}/${contentBlockId}/edit`)
   }
 
  /* onChange(event: any): void {

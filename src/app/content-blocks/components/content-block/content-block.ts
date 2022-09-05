@@ -27,7 +27,7 @@ export class ContentBlockComponent{
       return (str.length > n) ? str.slice(0, n-1) + '&hellip;' : str;
     };
 
-  onEditContentBlock(){
+  onShowContentBlock(){
     const themeId = +this.route.snapshot.params['themeId'];
     this.router.navigateByUrl(`contentBlocks/theme/${themeId}/${this.contentBlock.id}`);
   }
