@@ -1,5 +1,6 @@
 <div *ngIf="theme.parentId==0">
     <div class="row">
+        <mat-icon class="arrow_right" (click)="onArrow()" >{{arrow}}</mat-icon>
         <p routerLink="/contentBlocks/theme/{{theme.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{theme.name | uppercase}}</p>
         <div class="column">
             <button class="mainButton" mat-icon-button [matMenuTriggerFor]="a">
@@ -29,7 +30,7 @@
             </mat-menu>
         </div>
     </div>
-    <div cdkDropList [cdkDropListData]="themes" class="example-list" (cdkDropListDropped)="drop($event)">
+    <div cdkDropList [cdkDropListData]="themes" class="example-list" (cdkDropListDropped)="drop($event)" *ngIf="showSubthemes">
         <div *ngFor="let themeElement of themes" class="row" cdkDrag class="example-box">
             <div class= "subtheme column h-50" routerLink="/contentBlocks/theme/{{themeElement.id}}" *ngIf="themeElement.parentId==theme.id" routerLinkActive="active2">
                 <mat-icon>subdirectory_arrow_right</mat-icon> {{themeElement.name | uppercase}}

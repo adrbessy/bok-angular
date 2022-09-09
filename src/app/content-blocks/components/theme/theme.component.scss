@@ -52,13 +52,19 @@
 }
 
 p{
-  margin-left: 20px;
+  margin-left: 0px;
   margin-top: 9px;
   cursor: pointer;
   color: black;
   padding-top: 10px;
   padding-left: 5px;
   padding-right: 5px;
+}
+
+.arrow_right{
+  cursor: pointer;
+  margin-top: 20px;
+  margin-left: 20px;
 }
 
 .cdk-drag-preview {
