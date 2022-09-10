@@ -19,7 +19,7 @@ export class ThemeComponent{
   @Input() theme!: Theme;
   themes!: Theme[];
   subtheme!: Theme;
-  showSubthemes!: Boolean;
+  //showSubthemes!: Boolean;
   arrow: string = "keyboard_arrow_right";
 
   ngOnInit(): void {
@@ -57,15 +57,13 @@ export class ThemeComponent{
   }
 
   onArrow(){
-    console.log("this.showSubthemes : " + this.showSubthemes);
-    if(this.showSubthemes){
-      this.showSubthemes = false;
-      this.arrow = "keyboard_arrow_right";
+    if(this.theme.showSubthemes){
+      this.theme.showSubthemes = false;
     }
     else{
-      this.showSubthemes = true;
-      this.arrow = "keyboard_arrow_down";
+      this.theme.showSubthemes = true;
     }
+    this.themesService.editTheme((this.theme)).subscribe();
   }
 
   onTheme(){

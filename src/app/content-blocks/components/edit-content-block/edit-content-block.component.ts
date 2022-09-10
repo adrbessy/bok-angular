@@ -69,7 +69,7 @@ export class EditContentBlockComponent implements OnInit {
       { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline' ] },
       { name: 'styles', items: ['Font', 'FontSize' ] },
       { name: 'colors', items: [ 'TextColor', 'BGColor' ] },
-      { name: 'tools', items: [ 'Maximize'] },
+      { name: 'tools', items: [ 'Maximize'] }
     ];
   }
 

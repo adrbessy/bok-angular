@@ -42,7 +42,7 @@ export class EditThemeComponent implements OnInit {
   onSubmitForm(): void {
     const themeId = +this.route.snapshot.params['themeId'];
     const contentBlockId = +this.route.snapshot.params['id'];
-    this.themesService.editThemeName(this.themeForm.value).pipe(
+    this.themesService.editTheme(this.themeForm.value).pipe(
       tap(() => this.router.navigateByUrl(`/contentBlocks`))
     ).subscribe();
   }

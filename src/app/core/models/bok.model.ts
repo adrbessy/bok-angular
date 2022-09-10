@@ -15,4 +15,6 @@ export class Theme{
     name!: string;
     sort!: number;
     parentId!: number;
+    showSubthemes!: boolean;
+
 }
