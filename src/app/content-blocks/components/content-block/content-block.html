@@ -7,8 +7,14 @@
             </div>
             <div class="column col-3">
                 <div class="row icons float-right">
-                    <div (click)="onShowContentBlock()" class="ico" matTooltip="Agrandir">
-                        <mat-icon> zoom_out_map</mat-icon>
+                    <div (click)="onMinimize()" class="ico" matTooltip="Diminuer">
+                        <mat-icon>minimize</mat-icon>
+                    </div>
+                    <div (click)="onMaximize()" class="ico" matTooltip="Agrandir">
+                        <mat-icon>maximize</mat-icon>
+                    </div>
+                    <div (click)="onShowContentBlock()" class="ico" matTooltip="Pleine page">
+                        <mat-icon> zoom_out_map </mat-icon>
                     </div>
                     <div (click)="edit()" class="ico" matTooltip="Modifier">
                         <mat-icon>edit</mat-icon>

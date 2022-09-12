@@ -71,6 +71,7 @@ export class EditContentBlockComponent implements OnInit {
       { name: 'colors', items: [ 'TextColor', 'BGColor' ] },
       { name: 'tools', items: [ 'Maximize'] }
     ];
+    CKEDITOR
   }
 
   goBack(): void{
@@ -79,8 +80,7 @@ export class EditContentBlockComponent implements OnInit {
       tap(() => this.router.navigateByUrl(`/contentBlocks/theme/${themeId}`))
     ).subscribe(
       (reponse) =>
-      {
-      },
+      {},
       (error) => {
         console.log('Erreur !' + error);
       }
@@ -139,10 +139,15 @@ export class EditContentBlockComponent implements OnInit {
     );
   }
 
- /* onChange(event: any): void {
+ onChange(event: any): void {
     console.log(event);
-    this.contentBlocksService.updateContentBlock(this.contentBlockForm.value)
-    //this.log += new Date() + "<br />";
-  }*/
+    this.contentBlocksService.updateContentBlock(this.contentBlockForm.value).subscribe(
+      (reponse) =>
+      {},
+      (error) => {
+        console.log('Erreur !' + error);
+      }
+    );
+  }
 
 }

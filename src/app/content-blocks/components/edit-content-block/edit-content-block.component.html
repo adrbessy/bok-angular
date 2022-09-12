@@ -34,13 +34,12 @@
         </div>
         <form [formGroup]="contentBlockForm" *ngIf="isLoaded==true">
                     <div class="form-group">
-                        <ckeditor
-                        formControlName="content" name="fieldName">
+                        <ckeditor formControlName="content" name="fieldName" (change)="onChange($event)">
                         </ckeditor>
                     </div>
             <div class="modal-footer row">
-                <button type="button" (click)="goBack()" class="btn btn-warning column">Enregistrer et quitter</button>
-                <button type="submit" (click)="onSubmitForm()" class="btn btn-success column">Enregistrer</button>
+                <button type="button" (click)="goBack()" class="btn btn-warning column">Retour à la page principale</button>
+                <!--<button type="submit" (click)="onSubmitForm()" class="btn btn-success column">Enregistrer</button>-->
             </div>  
         </form>
     </div>

@@ -128,7 +128,7 @@ export class ThemeComponent{
     if(confirm("Are you sure to delete ?")) {
       this.themesService.deleteTheme(subthemeId).subscribe((reponse) =>
         {
-          location.reload();
+          this.router.navigateByUrl(`contentBlocks`);
         },
         (error) => {
           console.log('Erreur !' + error);

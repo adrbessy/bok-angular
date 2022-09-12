@@ -26,6 +26,10 @@ export class ContentBlocksService {
         );
     }
 
+    addContentBlockBis(newContentBlock: ContentBlock): Observable<ContentBlock> {
+        return this.http.post<ContentBlock>(`${environment.apiUrl}/ContentBlocks`, newContentBlock);
+    }
+
     deleteByThemeId(themeId: number) {
         this.http.delete<ContentBlock>(`${environment.apiUrl}/ContentBlocks/deleteByThemeId/${themeId}`);
     }

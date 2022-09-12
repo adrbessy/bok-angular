@@ -20,16 +20,29 @@ export class ContentBlockComponent{
     private sanitizer: DomSanitizer) {}
 
     ngOnInit(): void {
-      this.htmlString = this.sanitizer.bypassSecurityTrustHtml(this.truncate(this.contentBlock.content,300));
+      if(this.contentBlock.title=="Résumé"){
+        this.htmlString = this.sanitizer.bypassSecurityTrustHtml(this.truncate(this.contentBlock.content,0, ""));
+      }
+      else{
+        this.htmlString = this.sanitizer.bypassSecurityTrustHtml(this.truncate(this.contentBlock.content, 500, '&hellip;'));
+      }
     }
 
-  truncate(str: string, n: number){
-      return (str.length > n) ? str.slice(0, n-1) + '&hellip;' : str;
+  truncate(str: string, n: number, end: string){
+      return (str.length > n) ? str.slice(0, n-1) + end : str;
     };
 
   onShowContentBlock(){
     const themeId = +this.route.snapshot.params['themeId'];
     this.router.navigateByUrl(`contentBlocks/theme/${themeId}/${this.contentBlock.id}`);
+  }
+
+  onMaximize(){
+    this.htmlString = this.sanitizer.bypassSecurityTrustHtml(this.truncate(this.contentBlock.content,0, ""));
+  }
+
+  onMinimize(){
+    this.htmlString = this.sanitizer.bypassSecurityTrustHtml(this.truncate(this.contentBlock.content,1, ""));
   }
 
   onDeleteContentBlock(){
