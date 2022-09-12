@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ContentBlock } from 'src/app/core/models/bok.model';
 import { ContentBlocksService } from 'src/app/core/services/content-blocks.service';
+import { ThemesService } from 'src/app/core/services/themes.service';
 
 
 @Component({
@@ -17,8 +18,10 @@ export class SingleContentBlockComponent implements OnInit{
   contentBlock!: ContentBlock;
   htmlString!: SafeHtml;
   contentBlocks!: ContentBlock[];
+  themeName!: string;
 
   constructor(private contentBlocksService: ContentBlocksService,
+    private themesService: ThemesService,
     private route: ActivatedRoute, private router: Router,
     private sanitizer: DomSanitizer){}
 
@@ -33,6 +36,9 @@ export class SingleContentBlockComponent implements OnInit{
       this.contentBlocksService.getContentBlocksByThemeId(themeId).subscribe(contentBlocks => {
         this.contentBlocks = contentBlocks;
       });
+      this.themesService.getThemeById(themeId).subscribe(theme => {
+        this.themeName = theme.name;
+      })
     })
   }
 

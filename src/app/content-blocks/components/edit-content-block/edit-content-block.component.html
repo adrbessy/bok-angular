@@ -1,37 +1,36 @@
 <ng-container *ngIf="contentBlock">
     <div class="form-card">
         <div class="row justify-content-between">
-            <h2 class="column"><span style="color: #2EA043">{{themeName | titlecase}}</span></h2>
-            <div (click)="onShowContentBlock()" class="column" matTooltip="Lecture seule">
+            <h2 class="column col-2">
+                <span style="color: #2EA043">{{themeName | titlecase}}</span>
+            </h2>
+            <div *ngFor="let cb of contentBlocks" class="col-4 col-sm-4 col-md-4 col-lg-4">
+                <div *ngIf="contentBlock.id == cb.id" class="row">
+                    <span style="color: #2EA043" (click)="onEditContentBlock(cb.id)" class="tab" *ngIf="!canEditCode">
+                        {{cb.title}}
+                    </span>
+                    <form [formGroup]="contentBlockForm" *ngIf="canEditCode" class="row abcd">
+                        <div class="form-group">
+                            <input id="title" type="text" formControlName="title" size="25">
+                        </div>
+                        <button type="button" (click)="canEditCode = false" class="btn btn-warning column btn-title">Annuler</button>
+                        <button type="submit" (click)="onSubmitTitle()" [disabled]="contentBlockForm.invalid" class="btn btn-success column btn-title">Enregistrer</button>
+                    </form>
+                    <div (click)="canEditCode = true" class="ico" matTooltip="Modifier le titre" *ngIf="!canEditCode">
+                        <mat-icon id="edit">edit</mat-icon>
+                    </div>
+                </div>
+                <div *ngIf="contentBlock.id != cb.id" class="row">
+                    <span (click)="onEditContentBlock(cb.id)" class="tab">
+                        {{cb.title}}
+                    </span>
+                </div>
+            </div>
+            <div (click)="onShowContentBlock()" class="column float-right" matTooltip="Lecture seule">
                 <mat-icon> remove_red_eye </mat-icon>
             </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div *ngFor="let cb of contentBlocks" class="col-5 col-sm-5 col-md-5 col-lg-5">
-                    <div *ngIf="contentBlock.id == cb.id" class="row">
-                        <span style="color: #2EA043" (click)="onEditContentBlock(cb.id)" class="tab" *ngIf="!canEditCode">
-                            {{cb.title}}
-                        </span>
-                        <form [formGroup]="contentBlockForm" *ngIf="canEditCode" class="row abcd">
-                            <div class="form-group">
-                                <input id="title" type="text" formControlName="title" size="25">
-                            </div>
-                            <button type="button" (click)="canEditCode = false" class="btn btn-warning column btn-title">Annuler</button>
-                            <button type="submit" (click)="onSubmitTitle()" [disabled]="contentBlockForm.invalid" class="btn btn-success column btn-title">Enregistrer</button>
-                        </form>
-                        <div (click)="canEditCode = true" class="ico" matTooltip="Modifier le titre" *ngIf="!canEditCode">
-                            <mat-icon id="edit">edit</mat-icon>
-                        </div>
-                    </div>
-                    <div *ngIf="contentBlock.id != cb.id" class="row">
-                        <span (click)="onEditContentBlock(cb.id)" class="tab">
-                            {{cb.title}}
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
+    
         <form [formGroup]="contentBlockForm" *ngIf="isLoaded==true">
                     <div class="form-group">
                         <ckeditor formControlName="content" name="fieldName" (change)="onChange($event)">

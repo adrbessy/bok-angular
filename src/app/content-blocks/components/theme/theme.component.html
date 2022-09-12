@@ -2,7 +2,9 @@
     <div class="row">
         <mat-icon *ngIf="!theme.showSubthemes" class="arrow_right" (click)="onArrow()" >keyboard_arrow_right</mat-icon>
         <mat-icon *ngIf="theme.showSubthemes" class="arrow_right" (click)="onArrow()" >keyboard_arrow_down</mat-icon>
-        <p routerLink="/contentBlocks/theme/{{theme.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{theme.name | uppercase}}</p>
+        <p routerLink="/contentBlocks/theme/{{theme.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="theme">
+            {{theme.name | uppercase}}
+        </p>
         <div class="column">
             <button class="mainButton" mat-icon-button [matMenuTriggerFor]="a">
                 <mat-icon>more_vert</mat-icon>
