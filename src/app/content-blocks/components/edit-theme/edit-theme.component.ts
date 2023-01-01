@@ -36,7 +36,7 @@ export class EditThemeComponent implements OnInit {
   goBack(): void{
     const themeId = +this.route.snapshot.params['themeId'];
     const contentBlockId = +this.route.snapshot.params['id'];
-    this.router.navigateByUrl(`/contentBlocks`);
+    this.router.navigateByUrl(`/contentBlocks/theme/0`);
   }
 
   onSubmitForm(): void {

@@ -32,7 +32,7 @@ export class NewThemeComponent implements OnInit {
 
   onSubmitForm(): void {
     this.themesService.addTheme(this.themeForm.value).pipe(
-      tap(() => this.router.navigateByUrl('/contentBlocks'))
+      tap(() => this.router.navigateByUrl('/contentBlocks/theme/0'))
     ).subscribe(
       (result) =>
       this.themesService.getAllThemes().subscribe(
@@ -58,6 +58,16 @@ export class NewThemeComponent implements OnInit {
             createdDate: new Date(),
             sort: 0 
             })
+          ).subscribe();
+          this.contentBlockService.addContentBlockBis(  
+            ({
+            id: 0,
+            themeId: Math.max.apply(Math, this.themes.map(function(o) { return o.id; })),
+            title: "Sources",
+            content: "",
+            createdDate: new Date(),
+            sort: -1 
+            })
           ).subscribe()
         },
         (error) => {
@@ -71,7 +81,7 @@ export class NewThemeComponent implements OnInit {
   }
 
   onCancel(): void{
-    this.router.navigateByUrl(`/contentBlocks`);
+    this.router.navigateByUrl(`/contentBlocks/theme/0`);
   }
 
 }

@@ -29,6 +29,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { EditThemeComponent } from './components/edit-theme/edit-theme.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NotifierModule } from 'angular-notifier';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { NotifierModule } from 'angular-notifier';
     MatTooltipModule,
     MatMenuModule,
     MatTabsModule,
-    NotifierModule
+    NotifierModule,
+    Ng2SearchPipeModule
   ],
   exports: [
     ContentBlockComponent,

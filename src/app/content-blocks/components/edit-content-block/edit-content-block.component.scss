@@ -20,7 +20,7 @@
 
 .tab{
     cursor: pointer;
-    margin-top: 7.5px;
+    margin-top: 7px;
     font-size: 17.5px;
 }
 
@@ -38,5 +38,15 @@
 .container{
     margin-bottom: 10px;
 }
+
+.eye-icon{
+    padding-left: 100px;
+    margin-right: 20px;
+}
+
+.name{
+    margin-top: 7.5px;
+    padding-left: 0px;
+  }
 
 @import "node_modules/angular-notifier/styles";

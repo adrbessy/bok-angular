@@ -1,10 +1,12 @@
 <div class="content-block-card" *ngIf="contentBlock">
     <div class="row justify-content-between top-bar">
-        <h2 class="column col-2" (click)="goBack()" style="color: #2EA043" class="name">
-            <!--<mat-icon matTooltip="Retour" class="top-bar-icons">arrow_back</mat-icon>-->
+        <div class="column col-1" (click)="goBack()" class="left-arrow">
+            <mat-icon matTooltip="Retour aux thèmes">arrow_back</mat-icon>
+        </div>
+        <h2 class="column col-2" style="color: #2EA043" class="name">
             {{themeName | titlecase}}
         </h2>
-        <div *ngFor="let cb of contentBlocks" class="col-4 col-sm-4 col-md-4 col-lg-4">
+        <div *ngFor="let cb of contentBlocks" class="col-2 col-sm-2 col-md-2 col-lg-2">
             <div *ngIf="contentBlock.id == cb.id" class="row">
                 <span style="color: #2EA043" (click)="onShowContentBlock(cb.id)" class="tab">
                     {{cb.title}}
@@ -16,9 +18,8 @@
                 </span>
             </div>
         </div>
-        <div class="column">
-            <!--<button type="button" (click)="edit()" class="btn btn-primary">Edit</button>-->
-                <mat-icon (click)="edit()" matTooltip="Modifier" class="top-bar-icons">edit</mat-icon>
+        <div class="column col-1 top-bar-icons">
+                <mat-icon (click)="edit()" matTooltip="Modifier">edit</mat-icon>
         </div>
     </div>
     <p [innerHTML]="htmlString"></p>

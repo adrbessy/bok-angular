@@ -60,7 +60,7 @@ export class EditContentBlockComponent implements OnInit {
         this.contentBlocks = contentBlocks;
       });
     });
-    CKEDITOR.config.height = "500px";
+    CKEDITOR.config.height = "650px";
     //CKEDITOR.config.removeButtons = 'Source,Save,NewPage,ExportPdf,Preview,Print,Cut,Copy,Paste,Templates,PasteText,PasteFromWord,Undo,Redo,Find,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Replace,Strike,Subscript,Superscript,CopyFormatting,RemoveFormat,NumberedList,BulletedList,Outdent,Indent,Blockquote,CreateDiv,JustifyLeft,JustifyCenter,JustifyRight,JustifyBlock,BidiLtr,BidiRtl,Language,Unlink,Anchor,Smiley,SpecialChar,Table,PageBreak,Iframe,Styles,Format,ShowBlocks,About';  
     CKEDITOR.config.fontSize_defaultLabel = '16px';
     CKEDITOR.addCss(".cke_editable{cursor:text; font-size: 16px; font-family: Arial, sans-serif;}");
@@ -71,7 +71,8 @@ export class EditContentBlockComponent implements OnInit {
       { name: 'colors', items: [ 'TextColor', 'BGColor' ] },
       { name: 'tools', items: [ 'Maximize'] }
     ];
-    CKEDITOR
+    CKEDITOR.config.removePlugins = 'elementspath';
+    CKEDITOR.config.resize_enabled = false;
   }
 
   goBack(): void{

@@ -1,10 +1,13 @@
 <ng-container *ngIf="contentBlock">
     <div class="form-card">
         <div class="row justify-content-between">
-            <h2 class="column col-2">
-                <span style="color: #2EA043">{{themeName | titlecase}}</span>
+            <div class="column col-1 left-arrow" (click)="goBack()">
+                <mat-icon matTooltip="Retour aux thèmes">arrow_back</mat-icon>
+            </div>
+            <h2 class="column col-2 name" style="color: #2EA043">
+                    {{themeName | titlecase}}
             </h2>
-            <div *ngFor="let cb of contentBlocks" class="col-4 col-sm-4 col-md-4 col-lg-4">
+            <div *ngFor="let cb of contentBlocks" class="col-2 col-sm-2 col-md-2 col-lg-2">
                 <div *ngIf="contentBlock.id == cb.id" class="row">
                     <span style="color: #2EA043" (click)="onEditContentBlock(cb.id)" class="tab" *ngIf="!canEditCode">
                         {{cb.title}}
@@ -26,20 +29,19 @@
                     </span>
                 </div>
             </div>
-            <div (click)="onShowContentBlock()" class="column float-right" matTooltip="Lecture seule">
+            <div (click)="onShowContentBlock()" class="column col-1 col-sm-1 col-md-1 col-lg-1 eye-icon" matTooltip="Lecture">
                 <mat-icon> remove_red_eye </mat-icon>
             </div>
         </div>
     
         <form [formGroup]="contentBlockForm" *ngIf="isLoaded==true">
-                    <div class="form-group">
-                        <ckeditor formControlName="content" name="fieldName" (change)="onChange($event)">
-                        </ckeditor>
-                    </div>
-            <div class="modal-footer row">
+            <div class="form-group">
+                <ckeditor formControlName="content" name="fieldName" (change)="onChange($event)">
+                </ckeditor>
+            </div>
+            <!--<div class="modal-footer row">
                 <button type="button" (click)="goBack()" class="btn btn-warning column">Retour à la page principale</button>
-                <!--<button type="submit" (click)="onSubmitForm()" class="btn btn-success column">Enregistrer</button>-->
-            </div>  
+            </div>  -->
         </form>
     </div>
 </ng-container>

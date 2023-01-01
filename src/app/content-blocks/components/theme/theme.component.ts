@@ -39,18 +39,16 @@ export class ThemeComponent{
   }
 
   drop(event: CdkDragDrop<Theme[]>) {
-    console.log("hello guys");
     moveItemInArray(this.themes, event.previousIndex, event.currentIndex);
     //always, recalculate the order of the container (the list to drag)
-    for(var index in this.themes){
-      console.log(this.themes[index]);
-    }
     this.themes.forEach((x,index)=>{
       x.sort=-index
     })
     for(var index in this.themes){
       console.log(this.themes[index]);
     }
+    /*console.log(this.theme.name);
+    console.log("event.previousContainer.data[event.previousIndex].name : " + event.previousContainer.data[event.previousIndex].name);*/
     this.themesService.updateThemes(this.themes).subscribe(themes => {
       this.themes = themes.sort(this.compare);
     });
@@ -128,7 +126,8 @@ export class ThemeComponent{
     if(confirm("Are you sure to delete ?")) {
       this.themesService.deleteTheme(subthemeId).subscribe((reponse) =>
         {
-          this.router.navigateByUrl(`contentBlocks`);
+          this.router.navigateByUrl(`contentBlocks/theme/0`);
+          location.reload();
         },
         (error) => {
           console.log('Erreur !' + error);

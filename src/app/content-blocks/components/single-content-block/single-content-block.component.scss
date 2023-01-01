@@ -31,17 +31,24 @@
 
 .tab{
   cursor: pointer;
-  margin-top: 15px;
+  margin-top: 14px;
   font-size: 17.5px;
+  padding-left: 70px;
 }
 
 .name{
   margin-top: 7.5px;
-  cursor: pointer;
+  padding-left: 70px;
+}
+
+.left-arrow{
+  margin-top: 10px;
 }
 
 .top-bar-icons{
   margin-top: 7.5px;
+  padding-left: 100px;
+  margin-right: 20px;
 }
 
 .top-bar{
